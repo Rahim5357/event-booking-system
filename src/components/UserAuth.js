@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { login, logout } from '../redux/actions/userActions';
+import { userLogin, userLogout } from '../redux/actions/userActions';
 
 const UserAuth = () => {
   const [username, setUsername] = useState('');
@@ -9,11 +9,11 @@ const UserAuth = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(login(username));
+    dispatch(userLogin(username));
   };
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(userLogout());
   };
 
   if (user.isAuthenticated) {

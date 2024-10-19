@@ -1,41 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { getLocalStorageValue, removeLocalStorageValue, setLocalStorageValue } from "../../utils/localStorageValue";
 
-const initialState = {
-  user: null,
-  isAuthenticated: false,
-  loading: false,
-  error: null,
+const initialStates = "";
+const userReducer = (state = initialStates, action) => {
+  switch (action.type) {
+    case "USER_LOGIN":
+      setLocalStorageValue("username", action.payload);
+      return action.payload;
+    case "USER_LOGOUT":
+      removeLocalStorageValue("username");
+      return null;
+    case "USER_NAME":
+      return getLocalStorageValue("username") || state;
+    default:
+      return state;
+  }
 };
 
-const userSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {
-    loginStart(state) {
-      state.loading = true;
-      state.error = null;
-    },
-    loginSuccess(state, action) {
-      state.user = action.payload;
-      state.isAuthenticated = true;
-      state.loading = false;
-    },
-    loginFailure(state, action) {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    logout(state) {
-      state.user = null;
-      state.isAuthenticated = false;
-    },
-  },
-});
-
-export const { 
-  loginStart, 
-  loginSuccess, 
-  loginFailure, 
-  logout 
-} = userSlice.actions;
-
-export default userSlice.reducer;
+export default userReducer;

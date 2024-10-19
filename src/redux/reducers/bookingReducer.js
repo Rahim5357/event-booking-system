@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   currentBooking: null,
+  currentEvent: null, // Add this line
   bookingHistory: [],
   loading: false,
   error: null,
@@ -27,6 +28,9 @@ const bookingSlice = createSlice({
     clearCurrentBooking(state) {
       state.currentBooking = null;
     },
+    setCurrentEvent(state, action) { // Add this reducer
+      state.currentEvent = action.payload;
+    },
   },
 });
 
@@ -34,7 +38,8 @@ export const {
   createBookingStart, 
   createBookingSuccess, 
   createBookingFailure,
-  clearCurrentBooking
+  clearCurrentBooking,
+  setCurrentEvent // Add this to the exports
 } = bookingSlice.actions;
 
 export default bookingSlice.reducer;

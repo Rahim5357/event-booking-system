@@ -1,14 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
-import eventsReducer from './reducers/eventsReducer';
+import { createStore } from 'redux';
+import { combineReducers } from 'redux';
 import userReducer from './reducers/userReducer';
-import bookingReducer from './reducers/bookingReducer';
 
-const store = configureStore({
-  reducer: {
-    events: eventsReducer,
-    user: userReducer,
-    booking: bookingReducer,
-  },
+const rootReducer = combineReducers({
+  user: userReducer
 });
+
+const store = createStore(rootReducer);
 
 export default store;

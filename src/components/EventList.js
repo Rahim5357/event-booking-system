@@ -1,17 +1,21 @@
 // components/EventList.js
 import React, { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchEvents } from '../redux/actions/eventActions';
+import { getEvents } from '../redux/actions/eventActions';
 import EventCard from './EventCard';
 import { motion } from 'framer-motion';
 
 const EventList = () => {
   const dispatch = useDispatch();
   const { events, loading, error } = useSelector(state => state.events);
-  const { searchTerm, filters } = useSelector(state => state.filters);
+  // const { searchTerm, filters } = useSelector(state => state.filters);
+  let searchTerm = "";
+  let filters = {
+    category : ""
+  }
 
   useEffect(() => {
-    dispatch(fetchEvents());
+    dispatch(getEvents());
   }, [dispatch]);
 
   const filteredEvents = useMemo(() => {

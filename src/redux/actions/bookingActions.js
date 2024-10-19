@@ -1,6 +1,18 @@
-import { createBookingStart, createBookingSuccess, createBookingFailure, clearCurrentBooking } from '../reducers/bookingReducer';
-import { createBooking } from '../../api/mockApi';
+import { 
+  createBookingStart, 
+  createBookingSuccess, 
+  createBookingFailure, 
+  clearCurrentBooking,
+  setCurrentEvent
+} from '../reducers/bookingReducer';
+import { bookEventApi as createBooking } from '../../api/mockApi';
 import { updateAvailability } from './eventActions';
+// import { openModal } from '../reducers/modalReducer';
+
+export const openBookingModal = (event) => (dispatch) => {
+  dispatch(setCurrentEvent(event));
+  // dispatch(openModal());
+};
 
 export const bookEvent = (bookingData) => async (dispatch) => {
   try {

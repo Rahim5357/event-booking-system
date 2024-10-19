@@ -1,14 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { logoutAction } from '../redux/actions/userActions';
+import { userName } from '../redux/actions/userActions';
+import { useAuth } from '../contexts/AuthContexts';
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
-  const { isAuthenticated, user } = useSelector(state => state.user);
-
+  const { logout } = useAuth();
+  const history = useNavigate();
+  const userNameValue = useSelector(state => state.user);
+  useEffect(() => {
+    dispatch(userName());
+  }, [])
   const handleLogout = () => {
-    dispatch(logoutAction());
+    logout();
+    history("/")
   };
 
   return (
@@ -16,21 +22,18 @@ const Layout = ({ children }) => {
       <header className="bg-blue-600 text-white p-4">
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold">Event Booking System</Link>
+
+          <div className='text-2xl font-bold'>
+            <span >{userNameValue}</span>
+          </div>
+
           <nav>
             <ul className="flex space-x-4">
-              <li><Link to="/" className="hover:text-blue-200">Home</Link></li>
               <li><Link to="/events" className="hover:text-blue-200">Events</Link></li>
-              {isAuthenticated ? (
-                <>
-                  <li><Link to="/my-bookings" className="hover:text-blue-200">My Bookings</Link></li>
-                  <li>
-                    <button onClick={handleLogout} className="hover:text-blue-200">Logout</button>
-                  </li>
-                  <li className="text-blue-200">Welcome, {user.name}</li>
-                </>
-              ) : (
-                <li><Link to="/login" className="hover:text-blue-200">Login</Link></li>
-              )}
+              <li><Link to="/my-bookings" className="hover:text-blue-200">My Bookings</Link></li>
+              <li>
+                <button onClick={handleLogout} className="hover:text-blue-200">Logout</button>
+              </li>
             </ul>
           </nav>
         </div>

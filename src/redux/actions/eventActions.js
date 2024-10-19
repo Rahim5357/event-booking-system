@@ -1,5 +1,5 @@
 import { fetchEventsStart, fetchEventsSuccess, fetchEventsFailure, updateEventAvailability } from '../reducers/eventsReducer';
-import { fetchEvents } from '../../api/mockApi';
+import { fetchEventsApi as fetchEvents } from '../../api/mockApi';
 
 export const getEvents = () => async (dispatch) => {
   try {
@@ -14,3 +14,13 @@ export const getEvents = () => async (dispatch) => {
 export const updateAvailability = (eventId, date, availableTickets) => (dispatch) => {
   dispatch(updateEventAvailability({ eventId, date, availableTickets }));
 };
+
+export const setFilters = (filters) => ({
+  type: 'SET_FILTERS',
+  payload: filters
+});
+
+export const setSearchTerm = (term) => ({
+  type: 'SET_SEARCH_TERM',
+  payload: term
+});

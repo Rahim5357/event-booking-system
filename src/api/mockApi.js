@@ -264,3 +264,21 @@ const mockEvents = [
       }, 1000); // Simulate network delay
     });
   };
+
+  export const loginUser = (credentials) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        // Simulate a successful login
+        resolve({ success: true, user: { id: 1, username: credentials.username } });
+      }, 1000);
+    });
+  };
+  
+  export const logoutUser = () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        // Simulate a successful logout
+        resolve({ success: true });
+      }, 1000);
+    });
+  };
