@@ -1,5 +1,5 @@
 import { fetchEventsStart, fetchEventsSuccess, fetchEventsFailure, updateEventAvailability } from '../reducers/eventsReducer';
-import { fetchEventsApi as fetchEvents } from '../../api/mockApi';
+import { fetchEventsApi as fetchEvents, mockEvents } from '../../api/mockApi';
 
 export const getEvents = () => async (dispatch) => {
   try {
@@ -24,3 +24,10 @@ export const setSearchTerm = (term) => ({
   type: 'SET_SEARCH_TERM',
   payload: term
 });
+
+export const getEventsList = () =>{
+  return{
+    type: "GET_EVENTS_LIST",
+    payload: mockEvents
+  }
+}

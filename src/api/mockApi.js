@@ -1,4 +1,4 @@
-const mockEvents = [
+export const mockEvents = [
   {
     id: 1,
     title: 'Summer Music Festival',

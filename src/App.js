@@ -12,6 +12,7 @@ import EventDataChart from './components/EventDataChart';
 import EventPopularityChart from './components/EventPopularityChart';
 import LoginPage from './components/Login';
 import { AuthProvider } from './contexts/AuthContexts';
+import BookingModal from './components/BookingModal';
 
 function App() {
   return (
@@ -20,27 +21,12 @@ function App() {
         <Provider store={store}>
           <Routes>
             <Route path='/' element={<LoginPage />} />
-
-            <Route element={<Layout />}>
-              <Route path='/events' element={<EventList />} />
-            </Route>
+              <Route path='/events' element={<Layout><EventList /></Layout>} />
+              <Route path='/booking' element={<Layout><BookingModal /></Layout>} />
           </Routes>
         </Provider>
       </BrowserRouter>
     </AuthProvider>
   );
 }
-
-{/* 
-  <UserAuth />
-<div className="container mx-auto px-4">
-  <SearchBar />
-  <Filters /> */}
-{/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <EventDataChart />
-    <EventPopularityChart />
-  </div> */}
-{/* <EventList />
-</div>
-</Layout> */}
 export default App;

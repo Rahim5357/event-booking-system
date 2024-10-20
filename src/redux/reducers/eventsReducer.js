@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchEventsApi } from '../../api/mockApi';
 
 const initialState = {
   events: [],
@@ -40,3 +41,13 @@ export const {
 } = eventsSlice.actions;
 
 export default eventsSlice.reducer;
+
+
+export const eventsReducer = (state = [], action) => {
+  switch (action.type){
+    case "GET_EVENTS_LIST":
+      return action.payload;
+    default:
+      return state;
+  }
+}

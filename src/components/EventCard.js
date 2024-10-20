@@ -3,19 +3,17 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { openBookingModal } from '../redux/actions/bookingActions';
 import { calculateDynamicPrice } from '../utils/pricingUtils';
+import { useNavigate } from 'react-router-dom';
 
 const EventCard = ({ event }) => {
   const dispatch = useDispatch();
+  const history = useNavigate()
   const user = useSelector(state => state.user);
 
   const dynamicPrice = calculateDynamicPrice(event.price, event.seatsBooked, event.totalSeats);
 
   const handleBookNow = () => {
-    if (!user.isAuthenticated) {
-      alert('Please log in to book tickets');
-      return;
-    }
-    dispatch(openBookingModal(event));
+    history("/booking")
   };
 
   return (

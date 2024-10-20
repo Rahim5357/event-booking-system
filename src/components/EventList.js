@@ -1,35 +1,15 @@
-// components/EventList.js
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getEvents } from '../redux/actions/eventActions';
+import { getEventsList } from '../redux/actions/eventActions';
 import EventCard from './EventCard';
 import { motion } from 'framer-motion';
 
 const EventList = () => {
   const dispatch = useDispatch();
-  const { events, loading, error } = useSelector(state => state.events);
-  // const { searchTerm, filters } = useSelector(state => state.filters);
-  let searchTerm = "";
-  let filters = {
-    category : ""
-  }
-
+  const eventList = useSelector(state => state.events);
   useEffect(() => {
-    dispatch(getEvents());
-  }, [dispatch]);
-
-  const filteredEvents = useMemo(() => {
-    return events.filter(event => {
-      const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = !filters.category || event.category === filters.category;
-      const matchesPrice = !filters.priceRange || 
-        (event.price >= filters.priceRange[0] && event.price <= filters.priceRange[1]);
-      return matchesSearch && matchesCategory && matchesPrice;
-    });
-  }, [events, searchTerm, filters]);
-
-  if (loading) return <div className="text-center py-10">Loading...</div>;
-  if (error) return <div className="text-center py-10 text-red-500">Error: {error}</div>;
+    dispatch(getEventsList());
+  }, []);
 
   return (
     <motion.div 
@@ -38,7 +18,7 @@ const EventList = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {filteredEvents.map((event, index) => (
+      {eventList.map((event, index) => (
         <motion.div
           key={event.id}
           initial={{ opacity: 0, y: 50 }}
