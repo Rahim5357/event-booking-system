@@ -6,12 +6,12 @@ export const mockEvents = [
     category: 'Concerts',
     date: '2023-07-15',
     price: 80,
-    totalSeats: 20,
+    totalSeats: 200,
     seatsBooked: 0,
     priceTiers: [
-      { name: 'VIP', price: 150, availableSeats: 5 },
-      { name: 'Standard', price: 80, availableSeats: 10 },
-      { name: 'Economy', price: 50, availableSeats: 5 }
+      { name: 'VIP', price: 150, availableSeats: 50 },
+      { name: 'Standard', price: 80, availableSeats: 100 },
+      { name: 'Economy', price: 50, availableSeats: 50 }
     ]
   },
   {
