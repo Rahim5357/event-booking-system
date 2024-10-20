@@ -9,11 +9,12 @@ const priceRanges = [
   { label: '$200+', value: [200, Infinity] },
 ];
 
-const Filters = ({handlePriceRangeChange, handleCategoryChange, category, priceRange}) => {
-
+const Filters = ({ handlePriceRangeChange, handleCategoryChange, category, priceRange }) => {
   return (
     <div className="bg-gray-100 p-4 rounded-lg mb-6">
       <h3 className="text-lg font-semibold mb-4">Filters</h3>
+
+      {/* Category Filter */}
       <div className="mb-4">
         <h4 className="font-medium mb-2">Category</h4>
         <div className="flex flex-wrap gap-2">
@@ -32,6 +33,8 @@ const Filters = ({handlePriceRangeChange, handleCategoryChange, category, priceR
           ))}
         </div>
       </div>
+
+      {/* Price Range Filter */}
       <div>
         <h4 className="font-medium mb-2">Price Range</h4>
         <div className="flex flex-wrap gap-2">
