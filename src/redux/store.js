@@ -1,11 +1,17 @@
 import { createStore } from 'redux';
 import { combineReducers } from 'redux';
 import userReducer from './reducers/userReducer';
-import { eventsReducer } from './reducers/eventsReducer';
+import { clickEventForBookingReducer, getEventsReducer } from './reducers/eventsReducer';
+import { eventBookingReducer, getBookedEventsReducer, getBookingQuantityReducer, getTotalBookedEventsReducer } from './reducers/bookingReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
-  events: eventsReducer
+  events: getEventsReducer,
+  clickEvent: clickEventForBookingReducer,
+  eventsBook: eventBookingReducer,
+  bookedEvents: getBookedEventsReducer,
+  totalBookedEvents: getTotalBookedEventsReducer,
+  userBookedEventQuantity: getBookingQuantityReducer
 });
 
 const store = createStore(rootReducer);

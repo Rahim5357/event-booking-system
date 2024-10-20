@@ -1,17 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setSearchTerm } from '../redux/actions/eventActions';
-import { useDebounce } from '../hooks/useDebounce';
+import React from 'react';
 
-const SearchBar = () => {
-  const [search, setSearch] = useState('');
-  const debouncedSearch = useDebounce(search, 300);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setSearchTerm(debouncedSearch));
-  }, [debouncedSearch, dispatch]);
-
+const SearchBar = ({setSearch, search}) => {
   return (
     <div className="my-4">
       <input
@@ -19,7 +8,7 @@ const SearchBar = () => {
         placeholder="Search events..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full px-4 py-2 text-black rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
     </div>
   );

@@ -1,51 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchEventsApi } from '../../api/mockApi';
+import { getLocalStorageValue } from "../../utils/localStorageValue";
+import { updateMockEvents } from "../../utils/updateMockEvents";
 
-const initialState = {
-  events: [],
-  loading: false,
-  error: null,
-};
-
-const eventsSlice = createSlice({
-  name: 'events',
-  initialState,
-  reducers: {
-    fetchEventsStart(state) {
-      state.loading = true;
-      state.error = null;
-    },
-    fetchEventsSuccess(state, action) {
-      state.events = action.payload;
-      state.loading = false;
-    },
-    fetchEventsFailure(state, action) {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    updateEventAvailability(state, action) {
-      const { eventId, date, availableTickets } = action.payload;
-      const event = state.events.find(e => e.id === eventId);
-      if (event) {
-        event.availableTickets[date] = availableTickets;
-      }
-    },
-  },
-});
-
-export const { 
-  fetchEventsStart, 
-  fetchEventsSuccess, 
-  fetchEventsFailure,
-  updateEventAvailability
-} = eventsSlice.actions;
-
-export default eventsSlice.reducer;
-
-
-export const eventsReducer = (state = [], action) => {
+export const getEventsReducer = (state = [], action) => {
   switch (action.type){
     case "GET_EVENTS_LIST":
+      const bookedEventList = getLocalStorageValue("eventBookingList");
+      const updatedEventsList = updateMockEvents(bookedEventList, action.payload, action.search, action.filter);
+      return updatedEventsList;
+    default:
+      return state;
+  }
+}
+
+export const clickEventForBookingReducer = (state= {}, action) =>{
+  switch (action.type){
+    case "CLICK_EVENT_FOR_BOOKING":
       return action.payload;
     default:
       return state;

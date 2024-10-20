@@ -1,30 +1,26 @@
-import { 
-  createBookingStart, 
-  createBookingSuccess, 
-  createBookingFailure, 
-  clearCurrentBooking,
-  setCurrentEvent
-} from '../reducers/bookingReducer';
-import { bookEventApi as createBooking } from '../../api/mockApi';
-import { updateAvailability } from './eventActions';
-// import { openModal } from '../reducers/modalReducer';
-
-export const openBookingModal = (event) => (dispatch) => {
-  dispatch(setCurrentEvent(event));
-  // dispatch(openModal());
-};
-
-export const bookEvent = (bookingData) => async (dispatch) => {
-  try {
-    dispatch(createBookingStart());
-    const booking = await createBooking(bookingData);
-    dispatch(createBookingSuccess(booking));
-    dispatch(updateAvailability(booking.eventId, booking.date, booking.remainingTickets));
-  } catch (error) {
-    dispatch(createBookingFailure(error.message));
+export const eventBook = (payload) => {
+  return {
+    type: "EVENT_BOOKING",
+    payload: payload
   }
-};
+}
 
-export const clearBooking = () => (dispatch) => {
-  dispatch(clearCurrentBooking());
-};
+export const getBookedEvents = (search, filter) =>{
+  return{
+    type: "GET_BOOKED_EVENTS",
+    search,
+    filter
+  }
+}
+
+export const getTotalBookedEvents = () => {
+  return{
+    type : "GET_TOTAL_BOOKED_EVENTS"
+  }
+}
+
+export const getBookingQuantity = () => {
+  return {
+    type: "GET_BOOKING_QUANTITY"
+  }
+}

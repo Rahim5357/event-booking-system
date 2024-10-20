@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setFilters } from '../redux/actions/eventActions';
+import React from 'react';
 
 const categories = ['All', 'Concerts', 'Conferences', 'Sports'];
 const priceRanges = [
@@ -11,20 +9,7 @@ const priceRanges = [
   { label: '$200+', value: [200, Infinity] },
 ];
 
-const Filters = () => {
-  const [category, setCategory] = useState('All');
-  const [priceRange, setPriceRange] = useState([0, Infinity]);
-  const dispatch = useDispatch();
-
-  const handleCategoryChange = (newCategory) => {
-    setCategory(newCategory);
-    dispatch(setFilters({ category: newCategory === 'All' ? null : newCategory, priceRange }));
-  };
-
-  const handlePriceRangeChange = (newRange) => {
-    setPriceRange(newRange);
-    dispatch(setFilters({ category: category === 'All' ? null : category, priceRange: newRange }));
-  };
+const Filters = ({handlePriceRangeChange, handleCategoryChange, category, priceRange}) => {
 
   return (
     <div className="bg-gray-100 p-4 rounded-lg mb-6">

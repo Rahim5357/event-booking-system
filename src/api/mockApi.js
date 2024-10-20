@@ -6,12 +6,12 @@ export const mockEvents = [
     category: 'Concerts',
     date: '2023-07-15',
     price: 80,
-    totalSeats: 1000,
-    seatsBooked: 750,
+    totalSeats: 20,
+    seatsBooked: 0,
     priceTiers: [
-      { name: 'VIP', price: 150, availableSeats: 50 },
-      { name: 'Standard', price: 80, availableSeats: 150 },
-      { name: 'Economy', price: 50, availableSeats: 50 }
+      { name: 'VIP', price: 150, availableSeats: 5 },
+      { name: 'Standard', price: 80, availableSeats: 10 },
+      { name: 'Economy', price: 50, availableSeats: 5 }
     ]
   },
   {
@@ -21,12 +21,12 @@ export const mockEvents = [
     category: 'Conferences',
     date: '2023-09-10',
     price: 120,
-    totalSeats: 500,
-    seatsBooked: 300,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
-      { name: 'VIP', price: 200, availableSeats: 50 },
+      { name: 'VIP', price: 200, availableSeats: 40 },
       { name: 'Standard', price: 120, availableSeats: 100 },
-      { name: 'Economy', price: 80, availableSeats: 50 }
+      { name: 'Economy', price: 80, availableSeats: 60 }
     ]
   },
   {
@@ -36,12 +36,12 @@ export const mockEvents = [
     category: 'Sports',
     date: '2023-06-18',
     price: 200,
-    totalSeats: 20000,
-    seatsBooked: 18000,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
-      { name: 'VIP', price: 500, availableSeats: 500 },
-      { name: 'Standard', price: 200, availableSeats: 1000 },
-      { name: 'Economy', price: 100, availableSeats: 500 }
+      { name: 'VIP', price: 500, availableSeats: 60 },
+      { name: 'Standard', price: 200, availableSeats: 80 },
+      { name: 'Economy', price: 100, availableSeats: 60 }
     ]
   },
   {
@@ -51,12 +51,12 @@ export const mockEvents = [
     category: 'Concerts',
     date: '2023-08-20',
     price: 90,
-    totalSeats: 800,
-    seatsBooked: 600,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
       { name: 'VIP', price: 180, availableSeats: 50 },
       { name: 'Standard', price: 90, availableSeats: 100 },
-      { name: 'Economy', price: 60, availableSeats: 150 }
+      { name: 'Economy', price: 60, availableSeats: 50 }
     ]
   },
   {
@@ -66,12 +66,12 @@ export const mockEvents = [
     category: 'Conferences',
     date: '2023-10-05',
     price: 150,
-    totalSeats: 700,
-    seatsBooked: 500,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
       { name: 'VIP', price: 250, availableSeats: 50 },
-      { name: 'Standard', price: 150, availableSeats: 200 },
-      { name: 'Economy', price: 100, availableSeats: 100 }
+      { name: 'Standard', price: 150, availableSeats: 100 },
+      { name: 'Economy', price: 100, availableSeats: 50 }
     ]
   },
   {
@@ -81,12 +81,12 @@ export const mockEvents = [
     category: 'Sports',
     date: '2023-11-25',
     price: 100,
-    totalSeats: 3000,
-    seatsBooked: 2500,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
-      { name: 'VIP', price: 250, availableSeats: 100 },
-      { name: 'Standard', price: 100, availableSeats: 200 },
-      { name: 'Economy', price: 50, availableSeats: 300 }
+      { name: 'VIP', price: 250, availableSeats: 50 },
+      { name: 'Standard', price: 100, availableSeats: 100 },
+      { name: 'Economy', price: 50, availableSeats: 50 }
     ]
   },
   {
@@ -96,12 +96,12 @@ export const mockEvents = [
     category: 'Concerts',
     date: '2024-01-15',
     price: 75,
-    totalSeats: 500,
-    seatsBooked: 400,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
       { name: 'VIP', price: 150, availableSeats: 40 },
       { name: 'Standard', price: 75, availableSeats: 100 },
-      { name: 'Economy', price: 40, availableSeats: 100 }
+      { name: 'Economy', price: 40, availableSeats: 60 }
     ]
   },
   {
@@ -111,12 +111,12 @@ export const mockEvents = [
     category: 'Sports',
     date: '2024-06-18',
     price: 180,
-    totalSeats: 5000,
-    seatsBooked: 4000,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
-      { name: 'VIP', price: 500, availableSeats: 100 },
-      { name: 'Standard', price: 180, availableSeats: 300 },
-      { name: 'Economy', price: 100, availableSeats: 200 }
+      { name: 'VIP', price: 500, availableSeats: 60 },
+      { name: 'Standard', price: 180, availableSeats: 80 },
+      { name: 'Economy', price: 100, availableSeats: 60 }
     ]
   },
   {
@@ -126,12 +126,12 @@ export const mockEvents = [
     category: 'Sports',
     date: '2024-07-10',
     price: 60,
-    totalSeats: 1500,
-    seatsBooked: 1200,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
-      { name: 'VIP', price: 150, availableSeats: 100 },
-      { name: 'Standard', price: 60, availableSeats: 200 },
-      { name: 'Economy', price: 30, availableSeats: 300 }
+      { name: 'VIP', price: 150, availableSeats: 40 },
+      { name: 'Standard', price: 60, availableSeats: 80 },
+      { name: 'Economy', price: 30, availableSeats: 80 }
     ]
   },
   {
@@ -141,12 +141,12 @@ export const mockEvents = [
     category: 'Conferences',
     date: '2024-03-20',
     price: 130,
-    totalSeats: 600,
-    seatsBooked: 500,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
       { name: 'VIP', price: 250, availableSeats: 40 },
-      { name: 'Standard', price: 130, availableSeats: 150 },
-      { name: 'Economy', price: 90, availableSeats: 100 }
+      { name: 'Standard', price: 130, availableSeats: 100 },
+      { name: 'Economy', price: 90, availableSeats: 60 }
     ]
   },
   {
@@ -156,12 +156,12 @@ export const mockEvents = [
     category: 'Concerts',
     date: '2024-12-05',
     price: 85,
-    totalSeats: 900,
-    seatsBooked: 700,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
-      { name: 'VIP', price: 160, availableSeats: 60 },
-      { name: 'Standard', price: 85, availableSeats: 200 },
-      { name: 'Economy', price: 50, availableSeats: 150 }
+      { name: 'VIP', price: 160, availableSeats: 40 },
+      { name: 'Standard', price: 85, availableSeats: 80 },
+      { name: 'Economy', price: 50, availableSeats: 80 }
     ]
   },
   {
@@ -171,12 +171,12 @@ export const mockEvents = [
     category: 'Conferences',
     date: '2024-02-15',
     price: 140,
-    totalSeats: 800,
-    seatsBooked: 650,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
-      { name: 'VIP', price: 250, availableSeats: 60 },
-      { name: 'Standard', price: 140, availableSeats: 150 },
-      { name: 'Economy', price: 100, availableSeats: 100 }
+      { name: 'VIP', price: 250, availableSeats: 40 },
+      { name: 'Standard', price: 140, availableSeats: 100 },
+      { name: 'Economy', price: 100, availableSeats: 60 }
     ]
   },
   {
@@ -186,12 +186,12 @@ export const mockEvents = [
     category: 'Sports',
     date: '2024-04-25',
     price: 50,
-    totalSeats: 2000,
-    seatsBooked: 1500,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
-      { name: 'VIP', price: 150, availableSeats: 100 },
-      { name: 'Standard', price: 50, availableSeats: 300 },
-      { name: 'Economy', price: 30, availableSeats: 500 }
+      { name: 'VIP', price: 150, availableSeats: 40 },
+      { name: 'Standard', price: 50, availableSeats: 80 },
+      { name: 'Economy', price: 30, availableSeats: 80 }
     ]
   },
   {
@@ -201,12 +201,12 @@ export const mockEvents = [
     category: 'Concerts',
     date: '2024-06-15',
     price: 100,
-    totalSeats: 700,
-    seatsBooked: 600,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
       { name: 'VIP', price: 200, availableSeats: 40 },
-      { name: 'Standard', price: 100, availableSeats: 150 },
-      { name: 'Economy', price: 60, availableSeats: 100 }
+      { name: 'Standard', price: 100, availableSeats: 100 },
+      { name: 'Economy', price: 60, availableSeats: 60 }
     ]
   },
   {
@@ -216,15 +216,16 @@ export const mockEvents = [
     category: 'Sports',
     date: '2024-08-05',
     price: 90,
-    totalSeats: 4000,
-    seatsBooked: 3500,
+    totalSeats: 200,
+    seatsBooked: 0,
     priceTiers: [
-      { name: 'VIP', price: 250, availableSeats: 150 },
-      { name: 'Standard', price: 90, availableSeats: 400 },
-      { name: 'Economy', price: 60, availableSeats: 300 }
+      { name: 'VIP', price: 250, availableSeats: 40 },
+      { name: 'Standard', price: 90, availableSeats: 80 },
+      { name: 'Economy', price: 60, availableSeats: 80 }
     ]
   }
 ];
+
 
   
   export const fetchEventsApi = () => {

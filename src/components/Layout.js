@@ -1,21 +1,47 @@
-import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { userName } from '../redux/actions/userActions';
 import { useAuth } from '../contexts/AuthContexts';
+import SearchBar from './SearchBar';
+import Filters from './Filters';
+import { getEventsList } from '../redux/actions/eventActions';
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const { logout } = useAuth();
   const history = useNavigate();
+  let location = useLocation();
+  const [category, setCategory] = useState('All');
+  const [priceRange, setPriceRange] = useState([0, Infinity]);
+  const [search, setSearch] = useState('');
   const userNameValue = useSelector(state => state.user);
   useEffect(() => {
     dispatch(userName());
   }, [])
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      dispatch(getEventsList(search, { category: category === 'All' ? "all" : category, priceRange }));
+    }, 500);
+    return () => clearTimeout(delayDebounceFn);
+  }, [search]);
+
   const handleLogout = () => {
     logout();
     history("/")
   };
+
+  const handleCategoryChange = (newCategory) => {
+    setCategory(newCategory);
+    dispatch(getEventsList(search, { category: newCategory === 'All' ? "all" : newCategory, priceRange }));
+  };
+
+  const handlePriceRangeChange = (newRange) => {
+    setPriceRange(newRange);
+    dispatch(getEventsList(search, { category: category === 'All' ? "all" : category, priceRange: newRange }));
+  };
+
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -28,7 +54,14 @@ const Layout = ({ children }) => {
           </div>
 
           <nav>
-            <ul className="flex space-x-4">
+            <ul className="flex items-center space-x-4">
+              {
+                location?.pathname == "/events" && (
+                  <li>
+                    <SearchBar setSearch={setSearch} search={search} />
+                  </li>
+                )
+              }
               <li><Link to="/events" className="hover:text-blue-200">Events</Link></li>
               <li><Link to="/my-bookings" className="hover:text-blue-200">My Bookings</Link></li>
               <li>
@@ -40,6 +73,13 @@ const Layout = ({ children }) => {
       </header>
 
       <main className="flex-grow container mx-auto px-4 py-8">
+        {
+          location?.pathname == "/events" && (
+            <div>
+              <Filters handlePriceRangeChange={handlePriceRangeChange} handleCategoryChange={handleCategoryChange} priceRange={priceRange} category={category} />
+            </div>
+          )
+        }
         {children}
       </main>
 

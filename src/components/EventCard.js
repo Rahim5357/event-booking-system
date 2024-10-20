@@ -1,20 +1,31 @@
 // components/EventCard.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { openBookingModal } from '../redux/actions/bookingActions';
-import { calculateDynamicPrice } from '../utils/pricingUtils';
 import { useNavigate } from 'react-router-dom';
+import { getBookingQuantity } from '../redux/actions/bookingActions';
+import { clickEventForBooking } from '../redux/actions/eventActions';
+import { calculateDynamicPrice } from '../utils/pricingUtils';
 
 const EventCard = ({ event }) => {
   const dispatch = useDispatch();
   const history = useNavigate()
-  const user = useSelector(state => state.user);
+  const MAX_BOOKINGS = 10;
+  const bookedQuantity = useSelector(state => state.userBookedEventQuantity);
+    useEffect(() => {
+      dispatch(getBookingQuantity());
+    },[])
+    
 
-  const dynamicPrice = calculateDynamicPrice(event.price, event.seatsBooked, event.totalSeats);
-
-  const handleBookNow = () => {
-    history("/booking")
-  };
+    const handleBookNow = () => {
+      const currentBookings = bookedQuantity || 0;
+    
+      if (currentBookings < MAX_BOOKINGS) {
+        dispatch(clickEventForBooking({ event }));
+        history("/booking");
+      } else {
+        alert("You have reached the maximum booking limit of " + MAX_BOOKINGS + " events.");
+      }
+    };
 
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105">
@@ -26,7 +37,7 @@ const EventCard = ({ event }) => {
         <p className="text-gray-600 mb-4">{event.description}</p>
         <div className="flex justify-between items-center mb-4">
           <span className="text-gray-500">{event.date}</span>
-          <span className="text-green-500 font-bold">${dynamicPrice}</span>
+          <span className="text-green-500 font-bold">${event?.price}</span>
         </div>
         <div className="flex justify-between items-center mb-4">
           <span className="text-gray-500">Available Seats: {event.totalSeats - event.seatsBooked}</span>
