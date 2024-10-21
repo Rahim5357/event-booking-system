@@ -22,12 +22,12 @@ function LoginPage() {
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                Username
+                Email
               </label>
               <input
                 id="username"
                 type="text"
-                placeholder="Username"
+                placeholder="Eamil"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -36,12 +36,12 @@ function LoginPage() {
             </div>
             <div className="mb-6">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="otp">
-                OTP
+                Password
               </label>
               <input
                 id="otp"
                 type="text"
-                placeholder="OTP"
+                placeholder="Password"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}

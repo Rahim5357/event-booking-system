@@ -17,7 +17,6 @@ const Layout = ({ children }) => {
   const [search, setSearch] = useState('');
   const [menuOpen, setMenuOpen] = useState(false); // State to track menu visibility
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
-  const userNameValue = useSelector(state => state.user);
 
   useEffect(() => {
     dispatch(userName());
@@ -59,11 +58,6 @@ const Layout = ({ children }) => {
       <header className="bg-blue-600 text-white p-4">
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold">EVENT BOOKING</Link>
-
-          {/* User Name Display */}
-          <div className="text-2xl font-bold">
-            <span>{userNameValue}</span>
-          </div>
 
           <nav className="hidden lg:block">
             <ul className="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-4">
